@@ -1,0 +1,1185 @@
+
+/* ========================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --bg: #0b1020;
+    --bg-secundario: #121a30;
+    --bg-card: #151e36;
+
+    --texto: #f2ede0;
+    --texto-suave: #a9b0c3;
+
+    --dourado: #d4af37;
+    --dourado-claro: #f3d77a;
+
+    --borda: rgba(212, 175, 55, 0.25);
+
+    --raio: 16px;
+    --largura-maxima: 1150px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--texto);
+    font-family: Inter, Arial, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body,
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Cinzel, Georgia, serif;
+    line-height: 1.3;
+}
+
+.interface {
+    width: min(100% - 40px, var(--largura-maxima));
+    margin: 0 auto;
+}
+
+section {
+    padding: 90px 0;
+}
+
+.subtitulo {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--dourado);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+h2 {
+    color: var(--dourado-claro);
+    font-size: clamp(28px, 4vw, 40px);
+}
+
+.secao-cabecalho {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.secao-cabecalho h2 {
+    margin-bottom: 14px;
+}
+
+.secao-cabecalho p {
+    color: var(--texto-suave);
+}
+
+
+/* ========================================
+   2. BOTÕES
+======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 48px;
+    padding: 12px 24px;
+
+    border: 1px solid transparent;
+    border-radius: 50px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-principal {
+    background: linear-gradient(
+        135deg,
+        var(--dourado-claro),
+        var(--dourado)
+    );
+
+    color: #1a1405;
+}
+
+.btn-principal:hover {
+    background: var(--dourado-claro);
+}
+
+.btn-secundario {
+    border-color: var(--dourado);
+    color: var(--dourado-claro);
+    background: transparent;
+}
+
+.btn-secundario:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+
+/* ========================================
+   3. CABEÇALHO E NAVEGAÇÃO
+======================================== */
+
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(11, 16, 32, 0.94);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--borda);
+}
+
+.cabecalho-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    min-height: 82px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu a {
+    color: var(--texto-suave);
+    font-size: 14px;
+    transition: color 0.25s ease;
+}
+
+.menu a:hover {
+    color: var(--dourado-claro);
+}
+
+.cabecalho-acoes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.telefone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.telefone i {
+    color: var(--dourado);
+    font-size: 18px;
+}
+
+.icone-bolsa {
+    display: grid;
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--borda);
+    border-radius: 50%;
+
+    color: var(--dourado-claro);
+    transition: background 0.25s ease;
+}
+
+.icone-bolsa:hover {
+    background: rgba(212, 175, 55, 0.12);
+}
+
+
+/* ========================================
+   4. APRESENTAÇÃO PRINCIPAL
+======================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 30%,
+            rgba(39, 54, 94, 0.65),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg),
+            #10172c
+        );
+}
+
+.hero-conteudo {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 65px;
+
+    min-height: 470px;
+}
+
+.hero-texto h1 {
+    margin-bottom: 22px;
+    font-size: clamp(34px, 4.5vw, 56px);
+    font-weight: 700;
+}
+
+.hero-texto h1 span {
+    display: block;
+    color: var(--dourado-claro);
+}
+
+.hero-texto > p {
+    max-width: 540px;
+    margin-bottom: 30px;
+
+    color: var(--texto-suave);
+    font-size: 16px;
+}
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-beneficios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    margin-top: 35px;
+}
+
+.hero-beneficios span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+.hero-beneficios i {
+    color: var(--dourado);
+    font-size: 16px;
+}
+
+.hero-imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 0;
+}
+
+.hero-imagem img {
+    width: 100%;
+    max-width: 450px;
+    max-height: 450px;
+
+    object-fit: contain;
+    border-radius: var(--raio);
+
+    filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.25));
+}
+
+
+/* ========================================
+   5. MODELOS DE IPHONE
+======================================== */
+
+.produtos {
+    background: var(--bg);
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.produto-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 28px;
+
+    background: var(--bg-secundario);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.produto-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--dourado);
+    background: var(--bg-card);
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+
+    border: 1px solid var(--borda);
+    border-radius: 50px;
+
+    color: var(--dourado-claro);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.produto-icone {
+    display: grid;
+    place-items: center;
+
+    width: 65px;
+    height: 65px;
+    margin: 24px 0;
+
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+
+    background: rgba(212, 175, 55, 0.06);
+    color: var(--dourado-claro);
+}
+
+.produto-icone i {
+    font-size: 30px;
+}
+
+.produto-card h3 {
+    margin-bottom: 12px;
+    color: var(--texto);
+    font-size: 19px;
+}
+
+.produto-card > p {
+    flex-grow: 1;
+    margin-bottom: 24px;
+
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+.produto-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--dourado-claro);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.produto-link i {
+    transition: transform 0.25s ease;
+}
+
+.produto-link:hover i {
+    transform: translate(3px, -3px);
+}
+
+.aviso-produtos {
+    margin-top: 25px;
+    color: var(--texto-suave);
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* ========================================
+   6. SOBRE A ISTORE
+======================================== */
+
+.sobre {
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(212, 175, 55, 0.06),
+            transparent 35%
+        ),
+        var(--bg-secundario);
+}
+
+.sobre-conteudo {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 75px;
+}
+
+.sobre-imagem {
+    display: grid;
+    place-items: center;
+
+    min-height: 300px;
+    padding: 30px;
+
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212, 175, 55, 0.12),
+            transparent 70%
+        );
+}
+
+.sobre-imagem img {
+    width: 100%;
+    max-width: 230px;
+    max-height: 230px;
+    object-fit: contain;
+}
+
+.sobre-texto h2 {
+    margin-bottom: 22px;
+}
+
+.sobre-texto > p {
+    margin-bottom: 16px;
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+.sobre-lista {
+    display: grid;
+    gap: 13px;
+    margin: 25px 0 30px;
+}
+
+.sobre-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    color: var(--texto);
+    font-size: 14px;
+}
+
+.sobre-lista i {
+    margin-top: 4px;
+    color: var(--dourado);
+}
+
+
+/* ========================================
+   7. CONTATO
+======================================== */
+
+.contato {
+    text-align: center;
+}
+
+.contato-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+
+    margin-bottom: 35px;
+}
+
+.contato-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px 20px;
+
+    background: var(--bg-secundario);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.contato-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--dourado);
+}
+
+.contato-card > i {
+    margin-bottom: 18px;
+    color: var(--dourado);
+    font-size: 30px;
+}
+
+.contato-card h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.contato-card p {
+    color: var(--texto);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.contato-card span {
+    margin-top: 8px;
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+
+/* ========================================
+   8. RODAPÉ
+======================================== */
+
+.rodape {
+    padding: 35px 0 20px;
+    background: #080c17;
+    border-top: 1px solid var(--borda);
+    text-align: center;
+}
+
+.rodape-logo {
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.rodape-logo img {
+    width: 65px;
+    height: 65px;
+}
+
+.rodape-conteudo > p {
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.rodape-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin: 25px 0;
+}
+
+.rodape-links a {
+    color: var(--texto-suave);
+    font-size: 13px;
+    transition: color 0.25s ease;
+}
+
+.rodape-links a:hover {
+    color: var(--dourado-claro);
+}
+
+.copyright {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: var(--texto-suave);
+    font-size: 12px;
+}
+
+
+/* ========================================
+   9. TABLETS
+======================================== */
+
+@media (max-width: 1000px) {
+    .cabecalho-conteudo {
+        gap: 16px;
+    }
+
+    .menu ul {
+        gap: 16px;
+    }
+
+    .telefone span {
+        display: none;
+    }
+
+    .hero-conteudo {
+        gap: 30px;
+    }
+
+    .produtos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sobre-conteudo {
+        gap: 35px;
+    }
+}
+
+
+/* ========================================
+   10. CELULARES
+======================================== */
+
+@media (max-width: 700px) {
+    html {
+        scroll-padding-top: 75px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+
+    .interface {
+        width: min(100% - 32px, var(--largura-maxima));
+    }
+
+    .cabecalho-conteudo {
+        min-height: 72px;
+        gap: 12px;
+    }
+
+    .logo img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .menu ul {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .cabecalho-acoes {
+        gap: 10px;
+    }
+
+    .icone-bolsa {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero-conteudo {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        min-height: auto;
+    }
+
+    .hero-texto {
+        text-align: center;
+    }
+
+    .hero-texto h1 {
+        font-size: clamp(32px, 8vw, 45px);
+    }
+
+    .hero-texto > p {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .hero-botoes,
+    .hero-beneficios {
+        justify-content: center;
+    }
+
+    .hero-imagem img {
+        max-width: 340px;
+        max-height: 300px;
+    }
+
+    .produtos-grid,
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-card {
+        padding: 25px;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .sobre-imagem {
+        min-height: 220px;
+    }
+
+    .sobre-imagem img {
+        max-width: 170px;
+        max-height: 170px;
+    }
+
+    .sobre-texto h2 {
+        font-size: 30px;
+    }
+
+    .secao-cabecalho {
+        margin-bottom: 30px;
+    }
+
+    .rodape-links {
+        gap: 15px;
+    }
+}
+
+
+/* ========================================
+   11. CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 400px) {
+    .interface {
+        width: calc(100% - 24px);
+    }
+
+    .cabecalho-conteudo {
+        gap: 8px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu ul {
+        gap: 9px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .cabecalho-acoes {
+        gap: 7px;
+    }
+
+    .hero-texto h1 {
+        font-size: 30px;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .hero-botoes .btn {
+        width: 100%;
+    }
+
+    .hero-beneficios {
+        gap: 10px;
+    }
+
+    .hero-beneficios span {
+        font-size: 11px;
+    }
+}
+
+
+/* ========================================
+   12. ACESSIBILIDADE
+======================================== */
+
+a:focus-visible {
+    outline: 2px solid var(--dourado-claro);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* ========================================
+TABLETS E NOTEBOOKS PEQUENOS
+======================================== */
+
+@media (min-width: 701px) and (max-width: 1024px) {
+
+section {
+    padding: 70px 0;
+}
+
+.cabecalho-conteudo {
+    flex-wrap: wrap;
+    padding: 12px 0;
+}
+
+.menu ul {
+    gap: 14px;
+}
+
+.hero-conteudo {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 25px;
+    min-height: 400px;
+}
+
+.hero-texto h1 {
+    font-size: clamp(32px, 4vw, 44px);
+}
+
+.hero-texto > p {
+    font-size: 15px;
+}
+
+.hero-imagem img {
+    max-height: 350px;
+}
+
+.produtos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sobre-conteudo {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
+}
+
+.contato-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contato-card:last-child {
+    grid-column: 1 / -1;
+}
+
+}
+
+/* ========================================
+CELULARES E TABLETS EM PÉ
+======================================== */
+
+@media (max-width: 700px) {
+
+section {
+    padding: 55px 0;
+}
+
+.interface {
+    width: calc(100% - 32px);
+}
+
+/* Cabeçalho */
+.cabecalho-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.logo img {
+    width: 42px;
+    height: 42px;
+}
+
+.menu {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 22px;
+    width: max-content;
+    min-width: 100%;
+    padding: 4px 0 8px;
+}
+
+.menu a {
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.cabecalho-acoes {
+    gap: 12px;
+}
+
+.telefone {
+    gap: 5px;
+}
+
+.telefone span {
+    display: none;
+}
+
+.icone-bolsa {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* Apresentação principal */
+.hero-conteudo {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    min-height: auto;
+    padding-top: 25px;
+}
+
+.hero-texto {
+    text-align: center;
+}
+
+.hero-texto h1 {
+    font-size: clamp(30px, 7vw, 42px);
+    overflow-wrap: break-word;
+}
+
+.hero-texto > p {
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.hero-botoes {
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero-botoes .btn {
+    max-width: 100%;
+    padding: 12px 18px;
+    font-size: 13px;
+}
+
+.hero-beneficios {
+    justify-content: center;
+    gap: 12px 18px;
+    margin-top: 25px;
+}
+
+.hero-beneficios span {
+    font-size: 11px;
+}
+
+.hero-imagem img {
+    width: 100%;
+    max-width: 300px;
+    max-height: 280px;
+}
+
+/* Produtos */
+.produtos-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+}
+
+.produto-card {
+    padding: 22px;
+}
+
+.produto-icone {
+    margin: 18px 0;
+}
+
+/* Sobre */
+.sobre-conteudo {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+}
+
+.sobre-imagem {
+    min-height: 200px;
+    padding: 20px;
+}
+
+.sobre-imagem img {
+    max-width: 160px;
+    max-height: 160px;
+}
+
+.sobre-texto h2 {
+    font-size: clamp(27px, 6vw, 34px);
+}
+
+/* Contato */
+.contato-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+}
+
+.contato-card {
+    padding: 25px 18px;
+}
+
+/* Rodapé */
+.rodape-links {
+    gap: 12px 20px;
+}
+
+.rodape-links a {
+    font-size: 12px;
+}
+
+.copyright {
+    font-size: 11px;
+}
+
+}
+
+/* ========================================
+CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 380px) {
+
+.interface {
+    width: calc(100% - 24px);
+}
+
+.cabecalho-conteudo {
+    gap: 8px;
+}
+
+.logo img {
+    width: 36px;
+    height: 36px;
+}
+
+.cabecalho-acoes {
+    gap: 8px;
+}
+
+.hero-texto h1 {
+    font-size: 29px;
+}
+
+.hero-botoes {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hero-botoes .btn {
+    width: 100%;
+}
+
+.hero-beneficios {
+    gap: 10px;
+}
+
+.produto-card {
+    padding: 18px;
+}
+
+.secao-cabecalho h2 {
+    font-size: 27px;
+}
+
+}
+
+/* ========================================
+CELULAR NA HORIZONTAL
+======================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+.hero-conteudo {
+    min-height: auto;
+}
+
+.hero-imagem img {
+    max-height: 260px;
+}
+
+}
+
+/* ========================================
+ACESSIBILIDADE AO TOQUE
+======================================== */
+
+@media (hover: none) {
+
+.btn:hover,
+.produto-card:hover,
+.contato-card:hover {
+    transform: none;
+}
+
+}
